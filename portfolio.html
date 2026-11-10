@@ -1,0 +1,1521 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#040b15">
+<meta name="description" content="Portfolio of DevStylz - Showcasing custom full-stack e-commerce, distribution intelligence dashboards, AI geometric computer vision, and autonomous RAG agents.">
+<title>Portfolio &mdash; DevStylz Engineering Showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #040b15;
+  --navy-dark: #02060c;
+  --card-bg: #091322;
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-border-hover: rgba(62, 130, 255, 0.4);
+  --blue: #3e82ff;
+  --blue-hover: #296ff0;
+  --blue-glow: rgba(62, 130, 255, 0.25);
+  --blue-light: #92bbf5;
+  --ink: #f1f5f9;
+  --muted: #94a3b8;
+  --muted-dark: #64748b;
+  --radius: 18px;
+  --spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --press: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--navy);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .brand, .kicker, .kicker-light, .modal-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+}
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; }
+.wrap { width: min(1240px, calc(100% - 48px)); margin: auto; }
+
+/* Tactile press */
+.btn:active, .filter-pill:active, .project-card:active {
+  transform: scale(0.985);
+  transition: transform 0.08s var(--press) !important;
+}
+
+/* Nav Header */
+.header-top {
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(4, 11, 21, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 100;
+}
+.nav {
+  height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  color: #fff;
+  white-space: nowrap;
+}
+.brand img { width: 34px; height: 34px; object-fit: contain; }
+
+.navlinks { display: flex; align-items: center; gap: 32px; color: #dce7f8; font-size: 14px; font-weight: 500; }
+.navlinks a { transition: color 0.2s; position: relative; }
+.navlinks a:hover, .navlinks a.active { color: #83b2ff; }
+.navlinks a.active:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: var(--blue);
+  border-radius: 2px;
+}
+.menu {
+  display: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 650;
+  font-size: 13.5px;
+  transition: transform 0.2s var(--spring), background 0.2s, box-shadow 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-blue {
+  background: var(--blue);
+  color: white;
+  box-shadow: 0 4px 20px rgba(62, 130, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.btn-blue:hover {
+  background: var(--blue-hover);
+  box-shadow: 0 6px 26px rgba(62, 130, 255, 0.55);
+}
+.btn-glass {
+  color: white;
+  background: rgba(62, 130, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.btn-glass:hover {
+  background: rgba(62, 130, 255, 0.45);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+.btn-outline {
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.btn-outline:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+/* Hero Section */
+.portfolio-hero {
+  position: relative;
+  padding: 80px 0 60px;
+  background: radial-gradient(circle at 50% 0%, rgba(62, 130, 255, 0.15) 0%, rgba(4, 11, 21, 0) 70%);
+}
+.hero-badge-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2.8px;
+  font-size: 11px;
+  color: #a2c1ee;
+  font-weight: 700;
+}
+.eyebrow span { opacity: 0.6; font-size: 8px; }
+.hero-title {
+  font-size: clamp(38px, 4.6vw, 62px);
+  letter-spacing: -2.5px;
+  line-height: 1.1;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 20px;
+  max-width: 900px;
+}
+.hero-title em {
+  font-style: normal;
+  color: var(--blue);
+}
+.hero-desc {
+  font-size: 17px;
+  color: #9cb5d6;
+  max-width: 720px;
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+
+/* Stats Ribbon */
+.stats-ribbon {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  background: rgba(9, 19, 34, 0.7);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 20px 28px;
+  margin-bottom: 50px;
+  backdrop-filter: blur(12px);
+}
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.stat-item .val {
+  font-size: 26px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.8px;
+}
+.stat-item .val span {
+  color: var(--blue);
+}
+.stat-item .lbl {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.filter-pill {
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.2s var(--spring);
+}
+.filter-pill:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+.filter-pill.active {
+  color: #ffffff;
+  background: rgba(62, 130, 255, 0.2);
+  border-color: rgba(62, 130, 255, 0.5);
+  box-shadow: 0 0 16px rgba(62, 130, 255, 0.2);
+}
+
+/* Projects Grid */
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding-bottom: 90px;
+}
+
+/* Project Card */
+.project-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 22px;
+  overflow: hidden;
+  transition: border-color 0.3s var(--spring), box-shadow 0.3s var(--spring), transform 0.3s var(--spring);
+  position: relative;
+}
+.project-card:hover {
+  border-color: var(--card-border-hover);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 24px rgba(62, 130, 255, 0.15);
+  transform: translateY(-3px);
+}
+
+.project-inner {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  min-height: 480px;
+}
+.project-card.reverse .project-inner {
+  grid-template-columns: 0.85fr 1.15fr;
+}
+.project-card.reverse .project-preview-pane {
+  order: 2;
+}
+.project-card.reverse .project-content-pane {
+  order: 1;
+}
+
+/* Content Pane */
+.project-content-pane {
+  padding: 40px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+}
+.project-header-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.category-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  color: var(--blue-light);
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(62, 130, 255, 0.12);
+  border: 1px solid rgba(62, 130, 255, 0.25);
+}
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #4ade80;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 6px #22c55e;
+}
+
+.project-title {
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+.project-subtitle {
+  font-size: 15px;
+  color: #9cb5d6;
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+/* Feature Bullets */
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 13.5px;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+.feature-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--blue);
+  margin-top: 1px;
+}
+.feature-item strong {
+  color: #ffffff;
+}
+
+/* Tech Stack Tags */
+.tech-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.tech-chip {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Project Actions */
+.project-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.local-tag {
+  font-size: 11px;
+  color: #64748b;
+  font-family: 'JetBrains Mono', monospace;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Preview Mockup Pane */
+.project-preview-pane {
+  background: #060e1a;
+  border-left: 1px solid var(--card-border);
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.project-card.reverse .project-preview-pane {
+  border-left: none;
+  border-right: 1px solid var(--card-border);
+}
+
+/* Window Frame Mockup */
+.mockup-window {
+  width: 100%;
+  max-width: 520px;
+  background: #0b1626;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  transition: transform 0.3s var(--spring);
+}
+.project-card:hover .mockup-window {
+  transform: scale(1.02);
+}
+.window-topbar {
+  background: #08111f;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.window-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.window-dot.r { background: #ef4444; }
+.window-dot.y { background: #f59e0b; }
+.window-dot.g { background: #10b981; }
+.window-address {
+  margin-left: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 11px;
+  color: #7188a8;
+  font-family: 'JetBrains Mono', monospace;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.window-body {
+  padding: 18px;
+  font-size: 12px;
+}
+
+/* Custom Preview Visuals inside Mockup Window */
+
+/* 1. VoltCraft E-Commerce Mockup */
+.store-ui-mockup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.store-banner {
+  background: linear-gradient(135deg, rgba(62, 130, 255, 0.25) 0%, rgba(20, 50, 100, 0.4) 100%);
+  border: 1px solid rgba(62, 130, 255, 0.3);
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.store-banner strong { color: #fff; font-size: 13px; }
+.store-banner span { color: #92bbf5; font-size: 11px; }
+.store-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.store-prod-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+}
+.store-prod-icon {
+  width: 32px;
+  height: 32px;
+  margin: 0 auto 6px;
+  background: rgba(62, 130, 255, 0.15);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue);
+}
+.store-prod-title { font-size: 11px; font-weight: 700; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.store-prod-price { font-size: 11px; color: #4ade80; font-weight: 700; margin-top: 2px; }
+.store-cart-strip {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px dashed rgba(16, 185, 129, 0.3);
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11.5px;
+  color: #a7f3d0;
+}
+
+/* 2. Dashboard UI Mockup */
+.dash-ui-mockup {
+  display: flex;
+  gap: 12px;
+}
+.dash-dock-mock {
+  width: 38px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  gap: 10px;
+}
+.dash-dock-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  font-size: 11px;
+}
+.dash-dock-icon.active {
+  background: var(--blue);
+  color: #fff;
+}
+.dash-body-mock {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dash-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.dash-kpi-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+.dash-kpi-lbl { font-size: 10px; color: #64748b; }
+.dash-kpi-val { font-size: 14px; font-weight: 700; color: #fff; }
+.dash-chart-mock {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 12px;
+  height: 95px;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+.chart-bar {
+  flex: 1;
+  background: #334155;
+  border-radius: 4px 4px 1px 1px;
+  transition: all 0.3s;
+}
+.chart-bar.peak {
+  background: var(--blue);
+  box-shadow: 0 0 10px rgba(62, 130, 255, 0.4);
+}
+
+/* 3. CAD Vision Mockup */
+.cad-ui-mockup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cad-stage {
+  height: 140px;
+  background: #02060c;
+  border: 1px solid rgba(62, 130, 255, 0.2);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+.cad-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(62, 130, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(62, 130, 255, 0.08) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+.cad-rail {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  right: 10%;
+  height: 4px;
+  background: #475569;
+  border-radius: 2px;
+}
+.cad-antenna {
+  position: absolute;
+  width: 14px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid #94a3b8;
+  border-radius: 3px;
+  top: calc(50% - 14px);
+}
+.cad-antenna.a1 { left: 25%; }
+.cad-antenna.a2 { left: 75%; }
+.cad-antenna.new {
+  left: 50%;
+  background: rgba(34, 197, 94, 0.25);
+  border-color: #22c55e;
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.5);
+}
+.cad-cone {
+  position: absolute;
+  left: calc(50% + 7px);
+  top: calc(50% - 40px);
+  width: 0;
+  height: 0;
+  border-top: 40px solid transparent;
+  border-bottom: 40px solid transparent;
+  border-left: 90px solid rgba(62, 130, 255, 0.25);
+  transform-origin: left center;
+  pointer-events: none;
+}
+.cad-label-tag {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  color: #4ade80;
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.cad-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: #94a3b8;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* 4. RAG Chatbot Mockup */
+.rag-ui-mockup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.rag-chat-bubble {
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 11.5px;
+  line-height: 1.4;
+  max-width: 85%;
+}
+.rag-chat-bubble.u {
+  background: rgba(62, 130, 255, 0.2);
+  border: 1px solid rgba(62, 130, 255, 0.35);
+  color: #ffffff;
+  align-self: flex-end;
+}
+.rag-chat-bubble.bot {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
+  align-self: flex-start;
+}
+.rag-router-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 9.5px;
+  font-family: 'JetBrains Mono', monospace;
+  color: #93c5fd;
+  background: rgba(59, 130, 246, 0.15);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-top: 4px;
+}
+
+/* Modal Slide-over for Deep Dives */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 12, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--spring);
+  display: flex;
+  justify-content: flex-end;
+}
+.modal-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-drawer {
+  width: min(720px, 100%);
+  height: 100%;
+  background: #091322;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: -12px 0 40px rgba(0, 0, 0, 0.8);
+  padding: 40px;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.35s var(--spring);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.modal-backdrop.open .modal-drawer {
+  transform: translateX(0);
+}
+.modal-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: background 0.2s;
+}
+.modal-close:hover { background: rgba(255, 255, 255, 0.2); }
+.modal-title { font-size: 26px; font-weight: 800; color: #fff; }
+.modal-section-title { font-size: 16px; font-weight: 700; color: var(--blue-light); margin-bottom: 10px; }
+.modal-desc { font-size: 14.5px; color: #94a3b8; line-height: 1.65; }
+.code-block {
+  background: #02060c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #cbd5e1;
+  overflow-x: auto;
+  line-height: 1.6;
+}
+
+/* Call to Action Banner */
+.cta-section {
+  padding: 80px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: radial-gradient(circle at 50% 100%, rgba(62, 130, 255, 0.12) 0%, transparent 60%);
+}
+.cta-box {
+  background: linear-gradient(135deg, rgba(9, 19, 34, 0.9) 0%, rgba(5, 12, 22, 0.9) 100%);
+  border: 1px solid rgba(62, 130, 255, 0.3);
+  border-radius: 24px;
+  padding: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(62, 130, 255, 0.15);
+}
+.cta-copy h2 { font-size: 32px; font-weight: 800; color: #fff; margin-bottom: 10px; }
+.cta-copy p { font-size: 16px; color: #94a3b8; max-width: 580px; }
+
+/* Footer */
+footer {
+  padding: 40px 0 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  color: #94a3b8;
+  font-size: 13px;
+}
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+}
+.footer-brand img { width: 28px; height: 28px; }
+.footer-links {
+  display: flex;
+  gap: 24px;
+  color: #bac7d9;
+  font-weight: 500;
+}
+.footer-links a:hover { color: var(--blue-light); }
+
+/* Responsive Media Queries */
+@media(max-width: 1024px) {
+  .project-inner, .project-card.reverse .project-inner {
+    grid-template-columns: 1fr;
+  }
+  .project-card.reverse .project-preview-pane {
+    order: 1;
+  }
+  .project-card.reverse .project-content-pane {
+    order: 2;
+  }
+  .project-preview-pane {
+    border-left: none;
+    border-top: 1px solid var(--card-border);
+    padding: 30px 20px;
+  }
+  .stats-ribbon {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .cta-box {
+    flex-direction: column;
+    text-align: center;
+    padding: 36px 24px;
+  }
+}
+
+@media(max-width: 650px) {
+  .wrap { width: calc(100% - 32px); }
+  .menu { display: block; }
+  .navlinks {
+    display: none;
+    position: absolute;
+    top: 76px;
+    left: 0;
+    right: 0;
+    background: rgba(7, 17, 31, 0.98);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    padding: 24px 20px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .navlinks.open { display: flex; }
+  .navlinks .btn { width: 100%; }
+  .hero-title { font-size: 34px; letter-spacing: -1.5px; }
+  .project-content-pane { padding: 28px 20px; }
+  .stats-ribbon { grid-template-columns: 1fr; padding: 20px; }
+  .modal-drawer { padding: 24px 20px; }
+  .footer-row { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header Navigation -->
+<header class="header-top">
+  <div class="wrap">
+    <nav class="nav" id="mainNav" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="DevStylz home">
+        <img src="assets/devstylz-ds-logo.png" alt="DevStylz logo">
+        <span>DevStylz</span>
+      </a>
+      <button class="menu" id="menu" aria-expanded="false" aria-label="Toggle menu">&#9776;</button>
+      <div class="navlinks" id="navlinks">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#products">Products</a>
+        <a class="active" href="portfolio.html">Portfolio</a>
+        <a href="index.html#why-us">Why Us</a>
+        <a href="index.html#technology">Technology</a>
+        <a href="index.html#contact">Contact</a>
+        <a class="btn btn-glass" href="index.html#contact">Get Started <span>&rarr;</span></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="portfolio-hero">
+  <div class="wrap">
+    <div class="hero-badge-wrap">
+      <div class="eyebrow">Production Portfolio <span>&bull;</span> Systems Engineering</div>
+    </div>
+    <h1 class="hero-title">Engineering Solutions.<br><em>Built for Real-World Impact.</em></h1>
+    <p class="hero-desc">
+      A curated portfolio of commercial full-stack applications, operational intelligence dashboards, AI geometric solvers, and production-grade RAG agents engineered by DevStylz.
+    </p>
+
+    <!-- Stats Ribbon -->
+    <div class="stats-ribbon">
+      <div class="stat-item">
+        <div class="val font-mono">100<span>%</span></div>
+        <div class="lbl">Zero-Bloat Production Code</div>
+      </div>
+      <div class="stat-item">
+        <div class="val font-mono">4<span>+</span></div>
+        <div class="lbl">Production Showcases</div>
+      </div>
+      <div class="stat-item">
+        <div class="val font-mono">AI<span>&times;</span>Math</div>
+        <div class="lbl">Dual Verification Engines</div>
+      </div>
+      <div class="stat-item">
+        <div class="val font-mono">MCP<span>/</span>RAG</div>
+        <div class="lbl">Autonomous Agent Pipelines</div>
+      </div>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <button class="filter-pill active" data-filter="all">All Projects (4)</button>
+      <button class="filter-pill" data-filter="fullstack">Full-Stack &amp; E-Commerce</button>
+      <button class="filter-pill" data-filter="dashboard">Dashboards &amp; SaaS</button>
+      <button class="filter-pill" data-filter="ai-vision">AI &amp; Computer Vision</button>
+      <button class="filter-pill" data-filter="rag-agent">RAG &amp; AI Agents</button>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Showcase -->
+<main class="wrap">
+  <div class="projects-container">
+
+    <!-- PROJECT 1: VoltCraft Electronics -->
+    <article class="project-card" data-category="fullstack">
+      <div class="project-inner">
+        <div class="project-content-pane">
+          <div>
+            <div class="project-header-meta">
+              <span class="category-tag">Full-Stack &bull; Commercial Storefront</span>
+              <span class="status-pill"><span class="status-dot"></span> Full Architecture</span>
+            </div>
+            <h2 class="project-title">VoltCraft Electronics &mdash; Modern E-Commerce Platform</h2>
+            <p class="project-subtitle">
+              Commercial-grade electronics component storefront and integrated Merchant Studio engineered with Python FastAPI, SQLite3, and a zero-dependency reactive frontend.
+            </p>
+            <div class="feature-list">
+              <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <div><strong>Full Commercial Storefront:</strong> Carousel hero promotions, department navigation (MCUs, Sensors, Robotics, ICs), real-time flash sales countdown, and customer trust badges.</div>
+              </div>
+              <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <div><strong>Interactive Customer Experience:</strong> Live debounced search, pinout datasheet modal, cart drawer with discount coupon engine (<code>VOLT10</code>, <code>MAKER20</code>), and 3-step checkout wizard.</div>
+              </div>
+              <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <div><strong>Merchant Studio (Admin Portal):</strong> Real-time executive KPIs (Gross Revenue, Total Orders, Active SKUs, Low Stock alerts), complete catalog CRUD, and live order status fulfillment manager.</div>
+              </div>
+            </div>
+            <div class="tech-chips">
+              <span class="tech-chip">Python</span>
+              <span class="tech-chip">FastAPI</span>
+              <span class="tech-chip">SQLite3</span>
+              <span class="tech-chip">Vanilla JS</span>
+              <span class="tech-chip">Glassmorphic CSS</span>
+              <span class="tech-chip">REST APIs</span>
+              <span class="tech-chip">Swagger Docs</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <button class="btn btn-blue" onclick="openModal('voltcraft')">Architecture Deep-Dive &rarr;</button>
+            <span class="local-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Local: F:\portfolio\circuit_craft</span>
+          </div>
+        </div>
+
+        <div class="project-preview-pane">
+          <div class="mockup-window">
+            <div class="window-topbar">
+              <span class="window-dot r"></span>
+              <span class="window-dot y"></span>
+              <span class="window-dot g"></span>
+              <span class="window-address">voltcraft.local:8000/storefront</span>
+            </div>
+            <div class="window-body">
+              <div class="store-ui-mockup">
+                <div class="store-banner">
+                  <div>
+                    <strong>Raspberry Pi 5 &bull; 8GB RAM</strong>
+                    <div><span>Next-Gen Silicon Launch &bull; Instant Dispatch</span></div>
+                  </div>
+                  <span class="btn btn-blue" style="padding: 4px 10px; font-size: 11px;">Shop Now</span>
+                </div>
+                <div class="store-grid">
+                  <div class="store-prod-card">
+                    <div class="store-prod-icon">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+                    </div>
+                    <div class="store-prod-title">ESP32-S3 Wi-Fi</div>
+                    <div class="store-prod-price font-mono">₹449</div>
+                  </div>
+                  <div class="store-prod-card">
+                    <div class="store-prod-icon">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <div class="store-prod-title">MPU-6050 IMU</div>
+                    <div class="store-prod-price font-mono">₹189</div>
+                  </div>
+                  <div class="store-prod-card">
+                    <div class="store-prod-icon">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <div class="store-prod-title">Arduino Uno R4</div>
+                    <div class="store-prod-price font-mono">₹1,799</div>
+                  </div>
+                </div>
+                <div class="store-cart-strip font-mono">
+                  <span>Cart: 3 Items (Promo: VOLT10 Applied)</span>
+                  <strong>₹2,193 &rarr;</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 2: SweetCraft Intelligence Dashboard -->
+    <article class="project-card reverse" data-category="dashboard">
+      <div class="project-inner">
+        <div class="project-content-pane">
+          <div>
+            <div class="project-header-meta">
+              <span class="category-tag">Enterprise SaaS &bull; Operations Analytics</span>
+              <span class="status-pill"><span class="status-dot"></span> Interactive Engine</span>
+            </div>
+            <h2 class="project-title">SweetCraft &mdash; Commercial Distribution Intelligence</h2>
+            <p class="project-subtitle">
+              High-performance distribution analytics platform featuring Apple-inspired fluid motion, native SVG data visualization with zero heavy charting libraries, and 5 specialized operational docks.
+            </p>
+            <div class="feature-list">
+              <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <div><strong>5 Dedicated Operational Docks:</strong> Overview with real-time delivery velocity, SKU Profit Margins, Institutional Client Accounts, Inter-State Logistics dispatch, and Complete Orders Ledger.</div>
+              </div>
+              <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <div><strong>Custom Native SVG Charting Engine:</strong> Interactive distribution bar charts with dynamic micro-tags, hover inspection tooltips, and spring-animated sliding dock indicators.</div>
+              </div>
+              <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <div><strong>Blazing Fast &amp; Clean:</strong> Zero-dependency architecture loading instantly on 60fps with JetBrains Mono tabular numeric alignment and smooth glassmorphic surfaces.</div>
+              </div>
+            </div>
+            <div class="tech-chips">
+              <span class="tech-chip">Vanilla JS</span>
+              <span class="tech-chip">SVG Chart Engine</span>
+              <span class="tech-chip">Apple Spring Motion</span>
+              <span class="tech-chip">Glassmorphic CSS</span>
+              <span class="tech-chip">JetBrains Mono</span>
+              <span class="tech-chip">Operations KPIs</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <button class="btn btn-blue" onclick="openModal('sweetcraft')">Analytics Engine Specs &rarr;</button>
+            <span class="local-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Local: F:\portfolio\dashboard\v2_minimal</span>
+          </div>
+        </div>
+
+        <div class="project-preview-pane">
+          <div class="mockup-window">
+            <div class="window-topbar">
+              <span class="window-dot r"></span>
+              <span class="window-dot y"></span>
+              <span class="window-dot g"></span>
+              <span class="window-address">sweetcraft.analytics/distribution/v2</span>
+            </div>
+            <div class="window-body">
+              <div class="dash-ui-mockup">
+                <div class="dash-dock-mock">
+                  <div class="dash-dock-icon active">&#9632;</div>
+                  <div class="dash-dock-icon">&#9670;</div>
+                  <div class="dash-dock-icon">&#9679;</div>
+                  <div class="dash-dock-icon">&#9633;</div>
+                </div>
+                <div class="dash-body-mock">
+                  <div class="dash-kpis">
+                    <div class="dash-kpi-card">
+                      <div class="dash-kpi-lbl">Revenue</div>
+                      <div class="dash-kpi-val font-mono">₹4.82M</div>
+                    </div>
+                    <div class="dash-kpi-card">
+                      <div class="dash-kpi-lbl">Fulfillment</div>
+                      <div class="dash-kpi-val font-mono" style="color: #4ade80;">98.6%</div>
+                    </div>
+                    <div class="dash-kpi-card">
+                      <div class="dash-kpi-lbl">Active SKUs</div>
+                      <div class="dash-kpi-val font-mono">1,420</div>
+                    </div>
+                  </div>
+                  <div class="dash-chart-mock">
+                    <div class="chart-bar" style="height: 35%;"></div>
+                    <div class="chart-bar" style="height: 55%;"></div>
+                    <div class="chart-bar" style="height: 45%;"></div>
+                    <div class="chart-bar peak" style="height: 90%;"></div>
+                    <div class="chart-bar" style="height: 60%;"></div>
+                    <div class="chart-bar" style="height: 75%;"></div>
+                    <div class="chart-bar" style="height: 50%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 3: CAD-Vision-MCP -->
+    <article class="project-card" data-category="ai-vision">
+      <div class="project-inner">
+        <div class="project-content-pane">
+          <div>
+            <div class="project-header-meta">
+              <span class="category-tag">AI Engineering &bull; MCP Protocol</span>
+              <span class="status-pill"><span class="status-dot"></span> Open Source Tool</span>
+            </div>
+            <h2 class="project-title">CAD-Vision-MCP &mdash; AI Vision &amp; Geometric CAD Engine</h2>
+            <p class="project-subtitle">
+              A high-precision Model Context Protocol (MCP) server bridging Large Language Models (Anthropic Claude Vision) with raw DXF drawings to solve automated telecom tower antenna clash detection and geometric compliance.
+            </p>
+            <div class="feature-list">
+              <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <div><strong>Geometric Spatial Reconstruction:</strong> Overcame unorganized "exploded" CAD drawings with thousands of disconnected lines by clustering geometry into logical antenna entities using spatial proximity.</div>
+              </div>
+              <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <div><strong>Dual AI &amp; Math Architecture:</strong> Claude Vision matches DXF labels to physical antenna fixtures in steelwork photography via azimuth cues, while Shapely/NumPy computes exact 3D radiation cones.</div>
+              </div>
+              <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <div><strong>Automated Clash Detection:</strong> Mathematically slides candidate antennas along structural rails of the headframe to calculate clearance from existing equipment and locate 100% clash-free coordinates.</div>
+              </div>
+            </div>
+            <div class="tech-chips">
+              <span class="tech-chip">Anthropic Claude Vision</span>
+              <span class="tech-chip">Model Context Protocol (MCP)</span>
+              <span class="tech-chip">FastAPI</span>
+              <span class="tech-chip">ezdxf</span>
+              <span class="tech-chip">shapely</span>
+              <span class="tech-chip">numpy &amp; scipy</span>
+              <span class="tech-chip">PyMuPDF</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <a class="btn btn-blue" href="https://github.com/RaghavO222/CAD-Vision-MCP" target="_blank" rel="noopener noreferrer">
+              GitHub Repository
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <a class="btn btn-outline" href="https://www.linkedin.com/feed/update/urn:li:activity:7496277686105878530/" target="_blank" rel="noopener noreferrer">
+              LinkedIn Case Study &amp; Demo
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="project-preview-pane">
+          <div class="mockup-window">
+            <div class="window-topbar">
+              <span class="window-dot r"></span>
+              <span class="window-dot y"></span>
+              <span class="window-dot g"></span>
+              <span class="window-address">mcp://cad-vision/analyze-headframe</span>
+            </div>
+            <div class="window-body">
+              <div class="cad-ui-mockup">
+                <div class="cad-stage">
+                  <div class="cad-grid-bg"></div>
+                  <div class="cad-rail"></div>
+                  <div class="cad-antenna a1" title="Antenna Sector 1 (Existing)"></div>
+                  <div class="cad-antenna new" title="Candidate Antenna (Clash-Free)"></div>
+                  <div class="cad-cone"></div>
+                  <div class="cad-antenna a2" title="Antenna Sector 2 (Existing)"></div>
+                  <span class="cad-label-tag font-mono">&check; CLEAR: AZ 120&deg;</span>
+                </div>
+                <div class="cad-status-row">
+                  <span>Rail: 3.42m &bull; Clearance: 650mm</span>
+                  <span style="color: #4ade80;">100% Clash-Free Position</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 4: StyleHub AI RAG Assistant -->
+    <article class="project-card reverse" data-category="rag-agent">
+      <div class="project-inner">
+        <div class="project-content-pane">
+          <div>
+            <div class="project-header-meta">
+              <span class="category-tag">Agentic AI &bull; Vector RAG</span>
+              <span class="status-pill"><span class="status-dot"></span> Autonomous Pipeline</span>
+            </div>
+            <h2 class="project-title">StyleHub AI &mdash; Agentic RAG Google Calendar Assistant</h2>
+            <p class="project-subtitle">
+              Production appointment booking and customer consultation agent featuring a multi-slot Gemini LLM intent router, Qdrant vector semantic search, and Google Calendar API orchestration.
+            </p>
+            <div class="feature-list">
+              <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <div><strong>Two-Stage LLM Pipeline:</strong> First-pass Gemini router classifies intents (<code>CHAT</code>, <code>BOOK</code>, <code>DELETE</code>, <code>RAG</code>) and extracts parameters (barber, date window, time slots).</div>
+              </div>
+              <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <div><strong>Autonomous Calendar Orchestration:</strong> Programmatically queries availability, books time slots, and handles cancellations directly on Google Calendar via service account authentication.</div>
+              </div>
+              <div class="feature-item">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <div><strong>Qdrant Semantic RAG:</strong> Chunks and embeds service catalog and styling knowledge into Qdrant vector database, synthesizing accurate, grounded consultations without hallucination.</div>
+              </div>
+            </div>
+            <div class="tech-chips">
+              <span class="tech-chip">Google Gemini 1.5</span>
+              <span class="tech-chip">Qdrant Vector DB</span>
+              <span class="tech-chip">Python FastAPI</span>
+              <span class="tech-chip">Google Calendar API</span>
+              <span class="tech-chip">Telegram Webhook</span>
+              <span class="tech-chip">Pydantic Schemas</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <a class="btn btn-blue" href="https://github.com/RaghavO222/RAG-GoogleCalender-Chatbot" target="_blank" rel="noopener noreferrer">
+              GitHub Repository
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="project-preview-pane">
+          <div class="mockup-window">
+            <div class="window-topbar">
+              <span class="window-dot r"></span>
+              <span class="window-dot y"></span>
+              <span class="window-dot g"></span>
+              <span class="window-address">agent://stylehub-rag/calendar-chat</span>
+            </div>
+            <div class="window-body">
+              <div class="rag-ui-mockup">
+                <div class="rag-chat-bubble u">
+                  Can you book me for a Fade &amp; Beard Trim with Alex on Thursday at 3 PM?
+                </div>
+                <div class="rag-chat-bubble bot">
+                  <div class="rag-router-tag">&check; INTENT: BOOK | Barber: Alex | Time: 15:00</div>
+                  Confirmed! Added to Google Calendar for Thursday, 3:00 PM. A calendar invite has been scheduled with Alex.
+                </div>
+                <div class="rag-chat-bubble u">
+                  What pre-styling pomade do you recommend for textured wavy hair?
+                </div>
+                <div class="rag-chat-bubble bot">
+                  <div class="rag-router-tag">&bull; Qdrant RAG: top_k=3 docs retrieved</div>
+                  Based on our styling guide, we recommend our Matte Clay Pomade for medium hold and natural texture without shine.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<!-- Modal Drawer for Local Deep-Dives -->
+<div class="modal-backdrop" id="modalBackdrop" onclick="closeModal(event)">
+  <div class="modal-drawer" id="modalDrawer">
+    <div class="modal-top">
+      <span class="category-tag" id="modalCategory">ARCHITECTURE DEEP-DIVE</span>
+      <button class="modal-close" onclick="closeModalForce()">&times;</button>
+    </div>
+    <h3 class="modal-title" id="modalTitle">Project Architecture</h3>
+    <div id="modalBody">
+      <!-- Injected via JS -->
+    </div>
+  </div>
+</div>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="wrap">
+    <div class="cta-box">
+      <div class="cta-copy">
+        <h2>Ready to Engineer Your Next Platform?</h2>
+        <p>Whether you require a custom full-stack enterprise platform, commercial analytics dashboard, or autonomous AI system, DevStylz delivers dependable code built to scale.</p>
+      </div>
+      <a class="btn btn-blue" href="index.html#contact" style="padding: 16px 32px; font-size: 15px;">Start Your Project &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap footer-row">
+    <a class="footer-brand" href="index.html">
+      <img src="assets/devstylz-ds-logo.png" alt="DevStylz logo">
+      <span>DevStylz</span>
+    </a>
+    <div class="copyright">&copy; <span id="year"></span> DevStylz. Engineering Smarter Businesses.</div>
+    <div class="footer-links">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#products">Products</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="index.html#why-us">Why Us</a>
+      <a href="index.html#technology">Technology</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Year stamp
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Mobile navigation toggle
+const menu = document.getElementById('menu'), links = document.getElementById('navlinks');
+menu.addEventListener('click', () => {
+  const open = links.classList.toggle('open');
+  menu.setAttribute('aria-expanded', String(open));
+  menu.textContent = open ? '\u2715' : '\u2630';
+});
+
+// Category filtering
+const filterBtns = document.querySelectorAll('.filter-pill');
+const projectCards = document.querySelectorAll('.project-card');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.getAttribute('data-filter');
+
+    projectCards.forEach(card => {
+      if (filter === 'all' || card.getAttribute('data-category') === filter) {
+        card.style.display = 'block';
+        card.style.opacity = '0';
+        setTimeout(() => {
+          card.style.transition = 'opacity 0.3s ease';
+          card.style.opacity = '1';
+        }, 30);
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+
+// Modal Deep-Dive Data
+const deepDiveData = {
+  voltcraft: {
+    category: "FULL-STACK E-COMMERCE &bull; FASTAPI + SQLITE",
+    title: "VoltCraft Electronics Architecture",
+    content: `
+      <div class="modal-section-title">Overview &amp; Design Rationale</div>
+      <p class="modal-desc">
+        VoltCraft is an end-to-end commercial electronics distributor storefront and Merchant Studio. Unlike bloated frameworks that require gigabytes of node_modules and fragile microservices, VoltCraft was engineered with a blazingly fast Python FastAPI backend, SQLite3 with WAL mode, and a pure reactive ES6+ frontend.
+      </p>
+      
+      <div class="modal-section-title" style="margin-top:20px;">System Architecture</div>
+      <div class="code-block">
+circuit_craft/
+├── backend/
+│   ├── database.py       # SQLite connection, schema migrations & CRUD
+│   ├── models.py         # Pydantic validation schemas
+│   ├── seed_data.py      # 24 realistic hardware SKUs & coupons
+│   └── voltcraft.db      # Auto-generated SQLite database
+├── frontend/
+│   ├── css/styles.css    # Dark/light glassmorphic UI system
+│   ├── js/app.js         # Reactive catalog, cart drawer & checkout
+│   ├── js/admin.js       # Merchant Studio KPIs & fulfillment
+│   └── index.html        # Commercial single-page storefront
+└── main.py               # FastAPI application & REST endpoints
+      </div>
+
+      <div class="modal-section-title" style="margin-top:20px;">Key Capabilities</div>
+      <ul style="color:#cbd5e1; font-size:13.5px; padding-left:18px; line-height:1.7;">
+        <li><strong>Storefront:</strong> 6 Department filters, real-time debounced multi-parameter search, hardware pinout datasheets.</li>
+        <li><strong>Order Pipeline:</strong> Reactive cart drawer, verified promo codes (<code>VOLT10</code>, <code>MAKER20</code>), and 3-step simulated checkout (UPI, Cards, COD).</li>
+        <li><strong>Merchant Studio:</strong> Real-time financial metrics, SKU catalog editor, and order status workflow (<code>Processing</code> &rarr; <code>Shipped</code> &rarr; <code>Delivered</code>).</li>
+      </ul>
+
+      <div class="modal-section-title" style="margin-top:20px;">Local Run Command</div>
+      <div class="code-block">
+cd F:\\portfolio\\circuit_craft
+py -m pip install -r requirements.txt
+py main.py
+# Storefront: http://127.0.0.1:8000
+# Swagger API: http://127.0.0.1:8000/docs
+      </div>
+    `
+  },
+  sweetcraft: {
+    category: "ENTERPRISE SAAS &bull; DISTRIBUTION INTELLIGENCE",
+    title: "SweetCraft Distribution Dashboard",
+    content: `
+      <div class="modal-section-title">Overview &amp; Engineering</div>
+      <p class="modal-desc">
+        SweetCraft is a high-velocity operations intelligence platform built for commercial distribution networks. It provides real-time visibility across revenue velocity, SKU profit margins, institutional B2B accounts, supply chain dispatch flow, and complete order transactions.
+      </p>
+
+      <div class="modal-section-title" style="margin-top:20px;">Native SVG Charting &amp; Apple Physics</div>
+      <p class="modal-desc">
+        Rather than relying on heavy charting bundles that degrade mobile frame rates, SweetCraft features an in-house SVG generation engine. Bar columns, peak tags, and sliding dock indicator pills leverage Apple fluid spring curves (<code>cubic-bezier(0.16, 1, 0.3, 1)</code>) for butter-smooth 60fps responsiveness.
+      </p>
+
+      <div class="modal-section-title" style="margin-top:20px;">5 Core Functional Docks</div>
+      <ul style="color:#cbd5e1; font-size:13.5px; padding-left:18px; line-height:1.7;">
+        <li><strong>1. Overview:</strong> Timeframe sliding windows (7D, 30D, 90D), gross revenue velocity, delivery fill rate (98.6%), live activity ticker.</li>
+        <li><strong>2. Products &amp; Margin:</strong> Unit cost vs sales pricing, SKU margin percentages, and inventory velocity.</li>
+        <li><strong>3. Client Accounts:</strong> Tiered B2B institutional client health, repeat order cadence, and invoice tracking.</li>
+        <li><strong>4. Supply Chain Flow:</strong> Inter-state logistics map and route dispatch statuses.</li>
+        <li><strong>5. Orders Ledger:</strong> Searchable transactional ledger with filter pills and export options.</li>
+      </ul>
+
+      <div class="modal-section-title" style="margin-top:20px;">Local File Location</div>
+      <div class="code-block">
+File: F:\\portfolio\\dashboard\\v2_minimal\\index.html
+Run: Open directly in browser or host via python -m http.server 8080
+      </div>
+    `
+  }
+};
+
+const modalBackdrop = document.getElementById('modalBackdrop');
+const modalTitle = document.getElementById('modalTitle');
+const modalCategory = document.getElementById('modalCategory');
+const modalBody = document.getElementById('modalBody');
+
+function openModal(key) {
+  const data = deepDiveData[key];
+  if (!data) return;
+  modalCategory.innerHTML = data.category;
+  modalTitle.textContent = data.title;
+  modalBody.innerHTML = data.content;
+  modalBackdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e.target === modalBackdrop) {
+    closeModalForce();
+  }
+}
+
+function closeModalForce() {
+  modalBackdrop.classList.remove('open');
+  document.body.style.overflow = 'auto';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modalBackdrop.classList.contains('open')) {
+    closeModalForce();
+  }
+});
+</script>
+</body>
+</html>
