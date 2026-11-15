@@ -1089,64 +1089,74 @@ footer {
     cursor: pointer;
     position: relative;
     z-index: 10001;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+    padding: 8px 13px;
+    font-size: 18px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
   }
   .navlinks {
     display: none;
     position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #07111f;
-    background: rgba(7, 17, 31, 0.98);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    padding: 20px 20px 24px;
+    top: calc(100% + 10px);
+    left: 16px;
+    right: 16px;
+    background: rgba(8, 18, 33, 0.82);
+    -webkit-backdrop-filter: blur(30px) saturate(190%);
+    backdrop-filter: blur(30px) saturate(190%);
+    padding: 16px;
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
-    border-bottom: 1px solid rgba(62, 130, 255, 0.3);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.92), 0 12px 24px rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(62, 130, 255, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.15);
     z-index: 99999;
   }
   .navlinks.open {
     display: flex;
-    animation: mobileNavDown 0.2s ease-out;
+    animation: mobileNavGlass 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .navlinks a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 13px 18px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.05);
+    padding: 14px 18px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: #f1f5f9;
     font-size: 15px;
     font-weight: 600;
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .navlinks a:hover, .navlinks a.active {
     color: #38c8ff;
-    background: rgba(62, 130, 255, 0.14);
-    border-color: rgba(62, 130, 255, 0.35);
+    background: rgba(62, 130, 255, 0.18);
+    border-color: rgba(62, 130, 255, 0.45);
+    transform: scale(0.99);
   }
   .navlinks a.active:after { display: none; }
   .navlinks .btn {
     width: 100%;
     justify-content: center;
     padding: 14px 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     font-size: 14px;
     font-weight: 650;
-    background: var(--blue);
+    background: linear-gradient(135deg, #3e82ff 0%, #2563eb 100%);
     color: #fff;
-    box-shadow: 0 8px 24px rgba(62, 130, 255, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 24px rgba(62, 130, 255, 0.4);
     margin-top: 4px;
   }
-  @keyframes mobileNavDown {
-    from { opacity: 0; transform: translateY(-8px); }
-    to { opacity: 1; transform: translateY(0); }
+  @keyframes mobileNavGlass {
+    from { opacity: 0; transform: translateY(-10px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
   }
   .hero-title { font-size: 34px; letter-spacing: -1.5px; }
   .project-content-pane { padding: 28px 20px; }
