@@ -6,6 +6,8 @@
 <meta name="theme-color" content="#040b15">
 <meta name="description" content="Portfolio of DevStylz - Showcasing custom full-stack e-commerce, distribution intelligence dashboards, AI geometric computer vision, and autonomous RAG agents.">
 <title>Portfolio &mdash; DevStylz Engineering Showcase</title>
+<link rel="icon" type="image/png" href="assets/devstylz-ds-logo.png">
+<link rel="apple-touch-icon" href="assets/devstylz-ds-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -494,6 +496,158 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   padding: 18px;
   font-size: 12px;
 }
+
+/* Real Project Image Showcase */
+.project-img-frame {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #02060d;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+.project-real-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.4s var(--spring);
+}
+.project-img-frame:hover .project-real-img {
+  transform: scale(1.03);
+}
+.img-zoom-hint {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(4, 11, 21, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(8px);
+  color: #dce7f8;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+.project-img-frame:hover .img-zoom-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+.cad-view-toggle-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 5px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.cad-tab {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cad-tab:hover {
+  color: #fff;
+}
+.cad-tab.active {
+  background: var(--blue);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(62, 130, 255, 0.35);
+}
+.cad-tab-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+}
+/* Image Lightbox */
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(2, 6, 12, 0.88);
+  backdrop-filter: blur(14px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.image-lightbox.open {
+  display: flex;
+  opacity: 1;
+}
+.lightbox-dialog {
+  max-width: 1100px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background: #091322;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+}
+.lightbox-header {
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: #060e1a;
+}
+.lightbox-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
+.lightbox-close {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+.lightbox-close:hover { color: #fff; }
+.lightbox-body {
+  padding: 16px;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #040b15;
+}
+.lightbox-body img {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
 
 /* Custom Preview Visuals inside Mockup Window */
 
@@ -1076,40 +1230,11 @@ footer {
               <span class="window-address">voltcraft.local:8000/storefront</span>
             </div>
             <div class="window-body">
-              <div class="store-ui-mockup">
-                <div class="store-banner">
-                  <div>
-                    <strong>Raspberry Pi 5 &bull; 8GB RAM</strong>
-                    <div><span>Next-Gen Silicon Launch &bull; Instant Dispatch</span></div>
-                  </div>
-                  <span class="btn btn-blue" style="padding: 4px 10px; font-size: 11px;">Shop Now</span>
-                </div>
-                <div class="store-grid">
-                  <div class="store-prod-card">
-                    <div class="store-prod-icon">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
-                    </div>
-                    <div class="store-prod-title">ESP32-S3 Wi-Fi</div>
-                    <div class="store-prod-price font-mono">₹449</div>
-                  </div>
-                  <div class="store-prod-card">
-                    <div class="store-prod-icon">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                    </div>
-                    <div class="store-prod-title">MPU-6050 IMU</div>
-                    <div class="store-prod-price font-mono">₹189</div>
-                  </div>
-                  <div class="store-prod-card">
-                    <div class="store-prod-icon">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                    </div>
-                    <div class="store-prod-title">Arduino Uno R4</div>
-                    <div class="store-prod-price font-mono">₹1,799</div>
-                  </div>
-                </div>
-                <div class="store-cart-strip font-mono">
-                  <span>Cart: 3 Items (Promo: VOLT10 Applied)</span>
-                  <strong>₹2,193 &rarr;</strong>
+              <div class="project-img-frame" onclick="openImageModal('assets/projects/voltcraft-ecommerce.png', 'VoltCraft Electronics — Storefront Platform')">
+                <img src="assets/projects/voltcraft-ecommerce.png" alt="VoltCraft Electronics Commercial Storefront" class="project-real-img" loading="lazy">
+                <div class="img-zoom-hint">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                  <span>Click to expand</span>
                 </div>
               </div>
             </div>
@@ -1169,37 +1294,11 @@ footer {
               <span class="window-address">sweetcraft.analytics/distribution/v2</span>
             </div>
             <div class="window-body">
-              <div class="dash-ui-mockup">
-                <div class="dash-dock-mock">
-                  <div class="dash-dock-icon active">&#9632;</div>
-                  <div class="dash-dock-icon">&#9670;</div>
-                  <div class="dash-dock-icon">&#9679;</div>
-                  <div class="dash-dock-icon">&#9633;</div>
-                </div>
-                <div class="dash-body-mock">
-                  <div class="dash-kpis">
-                    <div class="dash-kpi-card">
-                      <div class="dash-kpi-lbl">Revenue</div>
-                      <div class="dash-kpi-val font-mono">₹4.82M</div>
-                    </div>
-                    <div class="dash-kpi-card">
-                      <div class="dash-kpi-lbl">Fulfillment</div>
-                      <div class="dash-kpi-val font-mono" style="color: #4ade80;">98.6%</div>
-                    </div>
-                    <div class="dash-kpi-card">
-                      <div class="dash-kpi-lbl">Active SKUs</div>
-                      <div class="dash-kpi-val font-mono">1,420</div>
-                    </div>
-                  </div>
-                  <div class="dash-chart-mock">
-                    <div class="chart-bar" style="height: 35%;"></div>
-                    <div class="chart-bar" style="height: 55%;"></div>
-                    <div class="chart-bar" style="height: 45%;"></div>
-                    <div class="chart-bar peak" style="height: 90%;"></div>
-                    <div class="chart-bar" style="height: 60%;"></div>
-                    <div class="chart-bar" style="height: 75%;"></div>
-                    <div class="chart-bar" style="height: 50%;"></div>
-                  </div>
+              <div class="project-img-frame" onclick="openImageModal('assets/projects/sweetcraft-dashboard.png', 'SweetCraft Commercial — Operations Analytics Dashboard')">
+                <img src="assets/projects/sweetcraft-dashboard.png" alt="SweetCraft Commercial Operations Dashboard" class="project-real-img" loading="lazy">
+                <div class="img-zoom-hint">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                  <span>Click to expand</span>
                 </div>
               </div>
             </div>
@@ -1266,19 +1365,19 @@ footer {
               <span class="window-address">mcp://cad-vision/analyze-headframe</span>
             </div>
             <div class="window-body">
-              <div class="cad-ui-mockup">
-                <div class="cad-stage">
-                  <div class="cad-grid-bg"></div>
-                  <div class="cad-rail"></div>
-                  <div class="cad-antenna a1" title="Antenna Sector 1 (Existing)"></div>
-                  <div class="cad-antenna new" title="Candidate Antenna (Clash-Free)"></div>
-                  <div class="cad-cone"></div>
-                  <div class="cad-antenna a2" title="Antenna Sector 2 (Existing)"></div>
-                  <span class="cad-label-tag font-mono">&check; CLEAR: AZ 120&deg;</span>
-                </div>
-                <div class="cad-status-row">
-                  <span>Rail: 3.42m &bull; Clearance: 650mm</span>
-                  <span style="color: #4ade80;">100% Clash-Free Position</span>
+              <div class="cad-view-toggle-bar">
+                <button class="cad-tab active" id="cadTabDetected" onclick="setCadView('detected')">
+                  <span class="cad-tab-dot"></span> AI Vision Detection
+                </button>
+                <button class="cad-tab" id="cadTabOriginal" onclick="setCadView('original')">
+                  Raw DXF Drawing
+                </button>
+              </div>
+              <div class="project-img-frame" onclick="openImageModal(currentCadImg, 'CAD-Vision MCP — Telecom Tower Antenna Analysis')">
+                <img id="cadPreviewImg" src="assets/projects/cad-vision-detected.png" alt="CAD-Vision MCP AI Geometric Analysis" class="project-real-img" loading="lazy">
+                <div class="img-zoom-hint">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                  <span>Click to expand</span>
                 </div>
               </div>
             </div>
@@ -1577,6 +1676,62 @@ document.addEventListener('keydown', (e) => {
     closeModalForce();
   }
 });
+
+// Interactive CAD Toggle
+let currentCadImg = 'assets/projects/cad-vision-detected.png';
+function setCadView(mode) {
+  const img = document.getElementById('cadPreviewImg');
+  const btnDetected = document.getElementById('cadTabDetected');
+  const btnOriginal = document.getElementById('cadTabOriginal');
+  if (!img || !btnDetected || !btnOriginal) return;
+  if (mode === 'detected') {
+    currentCadImg = 'assets/projects/cad-vision-detected.png';
+    img.src = currentCadImg;
+    btnDetected.classList.add('active');
+    btnOriginal.classList.remove('active');
+  } else {
+    currentCadImg = 'assets/projects/cad-vision-plan.png';
+    img.src = currentCadImg;
+    btnOriginal.classList.add('active');
+    btnDetected.classList.remove('active');
+  }
+}
+
+// Image Lightbox Modal
+function openImageModal(src, title) {
+  const box = document.getElementById('imageLightbox');
+  const img = document.getElementById('lightboxImg');
+  const t = document.getElementById('lightboxTitle');
+  if (!box || !img) return;
+  img.src = src;
+  if (t && title) t.textContent = title;
+  box.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeImageModal(e) {
+  if (e && e.target && e.target.closest('.lightbox-dialog') && !e.target.classList.contains('lightbox-close')) return;
+  const box = document.getElementById('imageLightbox');
+  if (box) box.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeImageModal(null);
+});
+
 </script>
+
+<!-- Image Lightbox Modal -->
+<div class="image-lightbox" id="imageLightbox" onclick="closeImageModal(event)">
+  <div class="lightbox-dialog" onclick="event.stopPropagation()">
+    <div class="lightbox-header">
+      <span class="lightbox-title" id="lightboxTitle">Project Preview</span>
+      <button class="lightbox-close" onclick="closeImageModal(null)" aria-label="Close preview">&times;</button>
+    </div>
+    <div class="lightbox-body">
+      <img src="" alt="Full preview" id="lightboxImg">
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
